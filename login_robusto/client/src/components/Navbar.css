@@ -1,0 +1,108 @@
+.Navbar {
+  background-color: #04a486 ;
+  width: 100%;
+  height: 80px;
+  display: flex;
+}
+
+.Navbar .leftSide {
+  flex: 50%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-left: 15px;
+  /* background-color: /*aqua; apenas para teste*/
+}
+
+.Navbar .leftSide .links{
+  text-decoration: none;
+  color: #fff;
+  font-size: 25px;
+  margin-left: 25px;
+}
+
+.Navbar .leftSide .links a{
+  text-decoration: none;
+  color: #fff;
+  font-size: 25px;
+}
+
+.Navbar .rightSide {
+  flex: 50%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.Navbar .rightSide .links{
+  max-height: 80px;
+  margin-right: 25px ;
+}
+
+.Navbar .rightSide button {
+  display: none;
+}
+
+.Navbar .rightSide #hidden {
+  display: flex;
+}
+
+.Navbar .rightSide .links a{
+  text-decoration: none;
+  color: #fff;
+  font-size: 25px;
+  margin-left: 15px;
+}
+
+@media only screen and (max-width: 850px) {
+  .Navbar .rightSide .links a{
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .Navbar .rightSide .links a{
+    font-size: 18px;   
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  /* botao aparece com a tela menos que 650 */
+  .Navbar .rightSide button {
+    display: flex;
+    background-color: Transparent ;
+    background-image: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .Navbar .rightSide button i {
+    display: flex;
+    color: #fff;
+    font-size: 22px;
+  }
+  /* links desaparecem com a tela menor que 650 */
+  .Navbar .rightSide .links {
+    display: none;
+    margin: 0px;
+  }
+  /* o menu mobile por si */
+  .Navbar .rightSide #hidden {
+    position: absolute;
+    right: 0px;
+    top: 80px;
+    height: 140px;
+    max-height: 140px;
+    width: 100%;
+    background-color: #04a486;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .Navbar .rightSide #hidden a {
+    margin-top: 5px ;
+    font-size: 25px;
+  }
+}
