@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 // Axios foi utilizado para a implementacao do back - Doc: https://axios-http.com/docs/intro
 // npm i axios
+// npm i styled-componentst
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Axios from 'axios'
 import './App.css';
 
 import Capa from './img/tela-login-final-y.png'
-import Crud_page from './pages/crud_page';
-import Navbar from './components/Navbar';
+import CrudPage from './pages/CrudPage';
+import Navbar from './components/Navbar'
 // import Login from './pages/Login.jsx'
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
 
   Axios.defaults.withCredentials = true; // Habilitar cookies
 
+
   const login = () => {
     Axios.post("http://localhost:3001/login", {
       cpf: cpf,
@@ -43,7 +45,7 @@ function App() {
   // Checa se há alguém logado toda refresh da página
   useEffect(() => {
     Axios.get("http://localhost:3001/login").then((response) => {
-      if (response.data.loggedIn == true) {
+      if (response.data.loggedIn === true) {
         setLoginStatus(response.data.user[0].cpf);
       }
     });
@@ -55,7 +57,7 @@ function App() {
       <div className="App">
         {loginStatus ? (
           <Routes> 
-            <Route path='/' element={<Crud_page />} />
+            <Route path='/' element={<CrudPage />} />
           </Routes>
         ) : (
           <>

@@ -45,6 +45,7 @@ app.use(cors({
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//Cookie options
 app.use(
     session({
         key: "userId",
@@ -52,11 +53,12 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            expires: 60 * 60 * 24
+            expires: 60 * 60 * 1
         },
     })
 );
 
+//Cria conexão com o banco de dados
 const db = mysql.createConnection({
     user: "root",
     host: "localhost",
