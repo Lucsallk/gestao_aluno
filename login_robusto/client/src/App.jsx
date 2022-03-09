@@ -5,16 +5,13 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Axios from 'axios'
 import './App.css';
 
+import Capa from './img/tela-login-final-y.png'
 import Crud_page from './pages/crud_page';
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
 // import Login from './pages/Login.jsx'
 function App() {
 
   // Para captar os inputs usamos os React Hooks
-
-  // Register
-  const [usernameReg, setUserNameReg] = useState('')
-  const [passwordReg, setPasswordReg] = useState('')
 
   //Login
   const [cpf, setCpf] = useState('')
@@ -28,15 +25,6 @@ function App() {
   // os hooks acima
 
   Axios.defaults.withCredentials = true; // Habilitar cookies
-
-  const register = () => {
-    Axios.post('http://localhost:3001/register', {
-      cpf: usernameReg,
-      senha: passwordReg
-    }).then((response) => {
-      console.log(response)
-    });
-  };
 
   const login = () => {
     Axios.post("http://localhost:3001/login", {
@@ -61,16 +49,6 @@ function App() {
     });
   }, []);
 
-  const userAuthenticated = () => {
-    Axios.get("http://localhost:3001/isUserAuth", { 
-      headers: {
-        "x-acess-token": localStorage.getItem("token"),
-      },
-    }).then((response) => {
-      console.log(response)
-    })
-  }
-
   return (
     <Router>
       <Navbar/>
@@ -81,36 +59,42 @@ function App() {
           </Routes>
         ) : (
           <>
-          
-            <div className="Container_Custom">
-              <h1>ID SOCORRO</h1>
-
-              <div className="Login-boddy">
-                <label>
-                  <h3>CPF:</h3>
-                  <input 
-                    type="text"
-                    placeholder='Username...'
-                    onChange={(e) => {
-                      setCpf(e.target.value)
-                    }}
-                  />
-                </label>
-                <label>
-                  <h3>SENHA:</h3>
-                  <input
-                    type="password"
-                    placeholder="password..."
-                    onChange={(e) => {
-                      setSenha(e.target.value)
-                    }}
-                  />
-                </label>
-                <div className="btn">
-                  <button onClick={login}> Entrar <i class="fa-solid fa-circle-arrow-right"></i> </button>              
-                </div>
+            <div className="Container_Supra">
+              <div className="Container_Img">
+                <img src={Capa} alt="Capa" />
               </div>
-            
+              <div className="Divisoria">
+
+              </div>
+              <div className="Container_Custom">
+                <h1>ID SOCORRO</h1>
+
+                <div className="Login-boddy">
+                  <label>
+                    <h3>CPF:</h3>
+                    <input 
+                      type="text"
+                      placeholder='Ex: 00000000000'
+                      onChange={(e) => {
+                        setCpf(e.target.value)
+                      }}
+                    />
+                  </label>
+                  <label>
+                    <h3>SENHA:</h3>
+                    <input
+                      type="password"
+                      placeholder="Ex: 1234"
+                      onChange={(e) => {
+                        setSenha(e.target.value)
+                      }}
+                    />
+                  </label>
+                  <div className="btn">
+                    <button onClick={login}> Entrar <i class="fa-solid fa-circle-arrow-right"></i> </button>              
+                  </div>
+                </div>
+              </div> {/*div Container_Custom*/}
             </div>
           </>
         ) }
