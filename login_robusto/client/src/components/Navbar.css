@@ -83,6 +83,7 @@
     color: #fff;
     font-size: 22px;
   }
+
   /* links desaparecem com a tela menor que 650 */
   .Navbar .rightSide .links {
     display: none;
@@ -100,6 +101,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
   }
   .Navbar .rightSide #hidden a {
     margin-top: 5px ;
